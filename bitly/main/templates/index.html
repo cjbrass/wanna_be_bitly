@@ -1,0 +1,14 @@
+
+{% if short_url %}
+    <p>Shortened url is: {{short_url}}</p>
+{% endif %}
+
+<form  method="post">
+    {% csrf_token %}
+    {% if message %}
+    <strong>{{message}}</strong>
+    {% endif %}
+    <label>URL to shorten: </label>
+    <input id="url" type="text" name="url">
+    <input type="submit" value="OK">
+</form>
