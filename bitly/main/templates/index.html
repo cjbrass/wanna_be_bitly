@@ -6,7 +6,7 @@
 <form  method="post">
     {% csrf_token %}
     {% if message %}
-    <strong>{{message}}</strong>
+    <p style="font-weight: bold;">{{message}}</p>
     {% endif %}
     <label>URL to shorten: </label>
     <input id="url" type="text" name="url">
