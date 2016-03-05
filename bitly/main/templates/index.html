@@ -1,14 +1,17 @@
+<body style="height: 100vh; text-align: center; margin: 0;">
+    <div style="display: inline-block; padding-top: 35vh;">
+        {% if short_url %}
+            <p>Shortened url is: {{short_url}}</p>
+        {% endif %}
 
-{% if short_url %}
-    <p>Shortened url is: {{short_url}}</p>
-{% endif %}
-
-<form  method="post">
-    {% csrf_token %}
-    {% if message %}
-    <p style="font-weight: bold;">{{message}}</p>
-    {% endif %}
-    <label>URL to shorten: </label>
-    <input id="url" type="text" name="url">
-    <input type="submit" value="OK">
-</form>
+        <form  method="post">
+            {% csrf_token %}
+            {% if message %}
+            <p style="font-weight: bold;">{{message}}</p>
+            {% endif %}
+            <label>URL to shorten: </label>
+            <input id="url" type="text" name="url">
+            <input type="submit" value="OK">
+        </form>
+    </div>
+</body>

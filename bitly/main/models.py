@@ -6,14 +6,15 @@ from django.core.exceptions import ValidationError
 
 
 class UrlRedirect(models.Model):
-    original_url = models.CharField(max_length=500)  # arbitrarily chosen
+    original_url = models.CharField(max_length=2000)  # quick google search suggests this is a safe character limit
     shortened_url = models.CharField(max_length=50, unique=True)
     created = models.DateTimeField(auto_now_add=True)  # can use this later to expire entries if we so desire
 
     INITIAL_LENGTH = 3
     """
     The first attempt to make a short url will try to make one 3 characters long. We increase the length by one every
-    time that fails.
+    time that fails. If we get to the point where we are consistently making longer strings, we could store this
+    value in the db, and adjust it to improve performance
     """
 
     def set_url(self, url):
